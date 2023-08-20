@@ -25,9 +25,7 @@ If you are developing a production application, we recommend updating the config
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-=======
-=======
->>>>>>> 7b11fa8c436ddf1e40c891ab1e327d61aa815cc6
+
 # FlavourOfHealth: A Nutritional Hub
 FlavourOfHealth is a full-stack web application designed to provide users with a comprehensive insight into nutrition and healthy cooking. It integrates various features to offer a wholesome experience, including a plethora of recipes, nutrition blogs, booking services, and social media links.
 
@@ -48,4 +46,7 @@ Details of service offers, prices, and a smooth booking process.
 # Social Media Integration: 
 Links to Instagram and other platforms for further engagement.
 
+# To Run locally 
+1. npm run dev
+2. check terminal for local ip.
 
