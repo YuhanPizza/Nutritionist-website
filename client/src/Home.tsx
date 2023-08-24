@@ -12,7 +12,7 @@ function Home() {
           <div className="col-md-7"> {/* Smaller width for single column */}
             <h2>Hi I'm Candace, Welcome to my Website</h2>
           
-          <Link to="/recipes" className="text-decoration-none">
+          <Link to="/recipes" className="text-decoration-none">{/* Link to recipes page */}
             <div className="card mb-4 mt-4" style={{cursor:'pointer'}}>
               <div className="card-body text-center">
                 <h3>Featured Recipes</h3>
@@ -21,7 +21,7 @@ function Home() {
             </div>
           </Link>
 
-          <Link to="/nutrition" className="text-decoration-none">
+          <Link to="/nutrition" className="text-decoration-none">{/* Link to nutrition article page */}
             <div className="card mb-4" style={{cursor: 'pointer'}}>
               <div className="card-body text-center">
                 <h3>Nutrition Articles</h3>
@@ -30,7 +30,7 @@ function Home() {
             </div>
           </Link>
 
-            <Link to="/about" className="text-decoration-none">
+            <Link to="/about" className="text-decoration-none">{/* Link to detailed About Me page */}
               <div className="card mb-4" style={{ cursor: 'pointer' }}>
                 <div className="card-body">
                   <div className="row">
@@ -40,7 +40,6 @@ function Home() {
                     <div className="col-md-8">
                       <h3>About Me</h3>
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                      {/* Link to detailed About Me page */}
                     </div>
                   </div>
                 </div>
