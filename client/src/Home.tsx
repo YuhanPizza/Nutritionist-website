@@ -1,11 +1,9 @@
-import React from 'react';
-import Navigation from './Navigation';
+
 import { Link } from 'react-router-dom';
 
 function Home() {
   return (
     <div>
-      <Navigation />
       <div className="container mt-4">
         <div className="row justify-content-center">
 
