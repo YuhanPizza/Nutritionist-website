@@ -1,0 +1,31 @@
+ul.topBottomBordersOut li{
+    position: relative;
+}
+ul.topBottomBordersOut li:before, ul.topBottomBordersOut li:after
+{
+    position: absolute;
+    left: 0px;
+    width: 90%;
+    height: 2px;
+    background: #072e1f;
+    content: "";
+    opacity: 0;
+    transition: all 0.3s;
+}
+ul.topBottomBordersOut li:before
+{
+    top: 0px;
+    transform: translateY(10px);
+}
+
+ul.topBottomBordersOut li:after
+{
+    bottom: 0px;
+    transform: translateY(-10px);
+}
+
+ul.topBottomBordersOut li:hover:before, ul.topBottomBordersOut li:hover:after
+{
+    opacity: 1;
+    transform: translateY(0px);
+}
