@@ -3,11 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
-import Recipes from './Recipes';
+import RecipeList from './Recipes';
 import Nutrition from './Nutrition';
 import Services from './Services';
 import BookOnline from './BookOnline';
 import Navigation from './Navigation';
+import AddRecipe from './AddRecipe';
+import Recipe from './Recipe';
 
 function App() {
   return (
@@ -16,10 +18,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/recipes" element={<RecipeList />} />
+        <Route path="/recipe/:id" element={<Recipe />} />
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/services" element={<Services/>} />
         <Route path="/book-online" element={<BookOnline/>} />
+        <Route path="/add-recipe" element={<AddRecipe/>}/>
         {/* Add more routes as needed */}
       </Routes>
     </Router>

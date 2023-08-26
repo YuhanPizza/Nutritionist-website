@@ -1,7 +1,14 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles/Navigation.css";
 
 function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div>
       <header>
@@ -12,16 +19,15 @@ function Navigation() {
           <button
             className="navbar-toggler"
             type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
+            onClick={toggleMenu}
             aria-controls="navbarNav"
-            aria-expanded="false"
+            aria-expanded={isOpen}
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            className="collapse navbar-collapse justify-content-center"
+            className={`collapse navbar-collapse justify-content-center ${isOpen ? "show" : ""}`}
             id="navbarNav"
           >
             <ul className="navbar-nav topBottomBordersOut">
@@ -53,6 +59,11 @@ function Navigation() {
               <li className="nav-item">
                 <Link className="nav-link px-3" to="/book-online">
                   Book Online
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link px-3" to="/add-recipe">
+                  Add New Recipe
                 </Link>
               </li>
             </ul>
