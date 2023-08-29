@@ -10,6 +10,8 @@ import BookOnline from './BookOnline';
 import Navigation from './Navigation';
 import AddRecipe from './AddRecipe';
 import Recipe from './Recipe';
+import AddArticle from './AddArticle';
+import Article from './Article';
 
 function App() {
   return (
@@ -21,9 +23,11 @@ function App() {
         <Route path="/recipes" element={<RecipeList />} />
         <Route path="/recipe/:id" element={<Recipe />} />
         <Route path="/nutrition" element={<Nutrition />} />
+        <Route path="/article/:id" element={<Article />} />
         <Route path="/services" element={<Services/>} />
         <Route path="/book-online" element={<BookOnline/>} />
         <Route path="/add-recipe" element={<AddRecipe/>}/>
+        <Route path="/add-article" element={<AddArticle/>}/>
         {/* Add more routes as needed */}
       </Routes>
     </Router>

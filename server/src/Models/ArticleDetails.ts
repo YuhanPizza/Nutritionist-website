@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 //const ObjectId = mongoose.Types.ObjectId;
 
 //Recipe
-const RecipeSchema = new Schema({
+const ArticleSchema = new Schema({
     name: {
       type: String,
       required: true,
@@ -25,5 +25,5 @@ const RecipeSchema = new Schema({
   });
   
   // Export the model
-  const RecipeModel = mongoose.model("RecipeDetails", RecipeSchema);
-  export default RecipeModel;
+  const ArticleModel = mongoose.model("ArticleDetails", ArticleSchema);
+  export default ArticleModel;

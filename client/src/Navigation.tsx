@@ -68,6 +68,11 @@ function Navigation() {
                   Add New Recipe
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link px-3" to="/add-article">
+                  Add New Article
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>

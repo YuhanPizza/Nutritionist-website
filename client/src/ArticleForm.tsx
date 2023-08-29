@@ -8,7 +8,7 @@ interface FormData {
   tag: string[];
 }
 
-const RecipeForm = () => {
+const ArticleForm = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     image: null,
@@ -38,10 +38,10 @@ const RecipeForm = () => {
       data.append(key, value);
     }
     try {
-      const response = await axios.post('http://localhost:5020/addRecipe', data,{
+      const response = await axios.post('http://localhost:5020/addArticle', data,{
         headers: { 'Contet-Type ': 'multipart/form-data'}
       });
-      console.log('Recipe added:', response.data);
+      console.log('New Article added:', response.data);
     } catch (error) {
       console.error('An error occurred:', error);
     }
@@ -51,11 +51,11 @@ const RecipeForm = () => {
     <section className="mt-4 d-flex justify-content-center" style={{ paddingBottom: '50px' }}>
       <div className="card w-50">
         <div className="card-body">
-          <h3 className="text-center">Add New Recipe</h3>
+          <h3 className="text-center">Add New Article</h3>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">Name</label>
-              <input type="text" className="form-control" id="name" name="name" placeholder="Enter recipe name" onChange={handleChange} />
+              <input type="text" className="form-control" id="name" name="name" placeholder="Enter Article Title" onChange={handleChange} />
             </div>
             <div className="mb-3">
               <label htmlFor="image" className="form-label">Image URL</label>
@@ -70,7 +70,7 @@ const RecipeForm = () => {
               <input type="text" className="form-control" id="tag" name="tag" placeholder="Enter tags (comma-separated)" onChange={handleTagChange} />
             </div>
             <div className="text-center">
-              <button type="submit" className="btn btn-primary">Add Recipe</button>
+              <button type="submit" className="btn btn-primary">Post Article</button>
             </div>
           </form>
         </div>
@@ -79,4 +79,4 @@ const RecipeForm = () => {
   );
 };
 
-export default RecipeForm;
+export default ArticleForm;

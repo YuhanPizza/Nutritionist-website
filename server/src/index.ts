@@ -4,6 +4,7 @@ import cors from "cors";
 import cloudinary from 'cloudinary';
 import dotenv from 'dotenv';
 import RecipeModel from "./Models/RecipeDetails";
+import ArticleModel from "./Models/ArticleDetails";
 import multer from 'multer';
 import streamifier from "streamifier";
 
@@ -72,6 +73,37 @@ app.post("/addRecipe", upload.single('image'), async (req: Request, res: Respons
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
+//Adding Article
+app.post("/addArticle", upload.single('image'), async (req: Request, res: Response) => {
+    try {
+        const { name, description, tag } = req.body;
+
+        if (!name || !description || !tag) {
+            return res.status(400).json({ message: "All fields are required" });
+        }
+
+        if (req.file) {
+            const result = await streamUpload(req);
+            const image = (result as ResultType).secure_url;
+
+            const newArticle = new ArticleModel({
+                name,
+                image,
+                description,
+                tag,
+            });
+
+            await newArticle.save();
+            res.status(201).json(newArticle);
+        } else {
+            res.status(400).send("No file uploaded");
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
 // Endpoint to get a List of Recipes
 app.get('/recipes', async (req: Request, res: Response) => {
     try {
@@ -81,7 +113,18 @@ app.get('/recipes', async (req: Request, res: Response) => {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
     }
-  });
+});
+// All Articles
+app.get('/articles', async (req: Request, res: Response) => {
+    try {
+        const articles = await ArticleModel.find();
+        res.status(200).json(articles);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
 // Endpoint to get a single recipe by ID
 app.get('/recipe/:id', async (req: Request, res: Response) => {
     try {
@@ -95,7 +138,21 @@ app.get('/recipe/:id', async (req: Request, res: Response) => {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
     }
-  });
+});
+//Article by Id
+app.get('/article/:id', async (req: Request, res: Response) => {
+    try {
+      const article = await ArticleModel.findById(req.params.id);
+      if (article) {
+        res.status(200).json(article);
+      } else {
+        res.status(404).json({ message: "Recipe not found" });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+});
 mongoose.connect('mongodb+srv://candacecheung9637:test123@cluster0.uxfb0nz.mongodb.net/?retryWrites=true&w=majority').then(() => {
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
