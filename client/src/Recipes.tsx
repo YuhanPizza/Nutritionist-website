@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Row, Col, Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Card, Row, Col, Container, CardGroup } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
+const MAX_IMAGE_WIDTH = "300px";
 
 interface RecipeType {
   _id: string;
@@ -18,42 +20,57 @@ function RecipeList() {
 
   useEffect(() => {
     // Fetch all recipes from the backend
-    axios.get('http://localhost:5000/recipes') // Change the URL to match your endpoint
-      .then(response => {
+    axios
+      .get("http://localhost:5020/recipes") // Change the URL to match your endpoint
+      .then((response) => {
         setRecipes(response.data);
       })
-      .catch(error => {
-        console.error('There was an error fetching the data:', error);
+      .catch((error) => {
+        console.error("There was an error fetching the data:", error);
       });
   }, []);
 
-  const goToRecipe = (id: string)=>{
+  const goToRecipe = (id: string) => {
     navigate(`/recipe/${id}`);
-  }
+  };
 
   return (
-    <Container fluid style={{marginTop: '50px'}}>
-      <Row>
-        {recipes.map((recipe) => (
-          <Col key={recipe._id} md={4} onClick={()=> goToRecipe(recipe._id)}>
-            <Card style={{ marginBottom: '20px' }}>
-              <Card.Img variant="top" src={recipe.image} style={{ height: '200px', objectFit: 'cover' }} />
-              <Card.Body>
-                <Card.Title>{recipe.name}</Card.Title>
-                <Card.Text style={{ 
-                  whiteSpace: 'nowrap', 
-                  overflow: 'hidden', 
-                  textOverflow: 'ellipsis' 
-                }}>
-                  {recipe.description}
-                </Card.Text>
-                <Card.Footer><small>{recipe.tag}</small></Card.Footer>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <CardGroup style={{ marginTop: "50px" }}>
+      {recipes.map((recipe) => (
+        <Card
+          bg="rgba(0, 0, 0)"
+          style={{ margin: "20px 10px", position: "relative" }}
+          onClick={() => goToRecipe(recipe._id)}
+        >
+          <Card.Img
+            variant="top"
+            src={recipe.image}
+            style={{
+              height: "200px",
+              objectFit: "cover",
+            }}
+          />
+
+          <Card.ImgOverlay>
+            <Card.ImgOverlay />
+            <Card.Title style={{ color: "white" }}>{recipe.name}</Card.Title>
+            <Card.Text
+              style={{
+                color: "white",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {recipe.description}
+            </Card.Text>
+            <Card.Footer style={{ color: "white" }}>
+              <small>{recipe.tag}</small>
+            </Card.Footer>
+          </Card.ImgOverlay>
+        </Card>
+      ))}
+    </CardGroup>
   );
 }
 

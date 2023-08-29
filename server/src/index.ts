@@ -36,7 +36,7 @@ cloudinary.v2.config({
     api_secret: "_m0gWsKSCmTZADZl90nZkXkGj30"
 });
 const app = express();
-const PORT = 5000;
+const PORT = 5020;
 
 // Middleware for parsing JSON data
 app.use(cors());
@@ -96,7 +96,7 @@ app.get('/recipe/:id', async (req: Request, res: Response) => {
       res.status(500).json({ message: "Internal Server Error" });
     }
   });
-mongoose.connect('mongodb+srv://candacecheung9637:J1W8AXW2wiU1VKP7@cluster0.uxfb0nz.mongodb.net/?retryWrites=true&w=majority').then(() => {
+mongoose.connect('mongodb+srv://candacecheung9637:test123@cluster0.uxfb0nz.mongodb.net/?retryWrites=true&w=majority').then(() => {
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });

@@ -27,7 +27,9 @@ function Navigation() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            className={`collapse navbar-collapse justify-content-center ${isOpen ? "show" : ""}`}
+            className={`collapse navbar-collapse justify-content-center ${
+              isOpen ? "show" : ""
+            }`}
             id="navbarNav"
           >
             <ul className="navbar-nav topBottomBordersOut">

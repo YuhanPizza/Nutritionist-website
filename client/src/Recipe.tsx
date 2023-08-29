@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { Card, Container } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { Card, Container } from "react-bootstrap";
 
 interface RecipeType {
   _id: string;
@@ -16,20 +16,25 @@ function Recipe() {
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/recipe/${id}`)
-      .then(response => {
+    axios
+      .get(`http://localhost:5020/recipe/${id}`)
+      .then((response) => {
         setRecipe(response.data);
       })
-      .catch(error => {
-        console.error('Error fetching data:', error);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   }, [id]);
 
   return (
-    <Container style={{ marginTop: '20px' }}>
+    <Container style={{ marginTop: "20px" }}>
       {recipe ? (
         <Card>
-          <Card.Img variant="top" src={recipe.image} style={{ height: '400px', objectFit: 'cover' }} />
+          <Card.Img
+            variant="top"
+            src={recipe.image}
+            style={{ height: "400px", objectFit: "cover" }}
+          />
           <Card.Body>
             <Card.Title>{recipe.name}</Card.Title>
             <Card.Text>{recipe.description}</Card.Text>
