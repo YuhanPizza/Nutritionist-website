@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "./styles/Form.css";
 
 interface FormData {
   name: string;
@@ -16,7 +17,7 @@ const ArticleForm = () => {
     tag: [],
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -39,7 +40,7 @@ const ArticleForm = () => {
     }
     try {
       const response = await axios.post('http://localhost:5020/addArticle', data,{
-        headers: { 'Contet-Type ': 'multipart/form-data'}
+        headers: { 'Content-Type': 'multipart/form-data'}
       });
       console.log('New Article added:', response.data);
     } catch (error) {
@@ -61,9 +62,9 @@ const ArticleForm = () => {
               <label htmlFor="image" className="form-label">Image URL</label>
               <input type="file" className="form-control" id="image" name="image" placeholder="Upload image" onChange={handleImageChange} />
             </div>
-            <div className="mb-3">
+            <div className="mb-3 preserve-whitespace">
               <label htmlFor="description" className="form-label">Description</label>
-              <input type="text" className="form-control" id="description" name="description" placeholder="Enter description" onChange={handleChange} />
+              <textarea className="form-control" id="description" name="description" rows={5} placeholder="Enter description" onChange={handleChange} />
             </div>
             <div className="mb-3">
               <label htmlFor="tag" className="form-label">Tags</label>

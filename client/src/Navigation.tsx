@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./styles/Navigation.css";
+import "./styles/Navigation.css"; // You can still use this for any custom styles you may have
 
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,8 +12,8 @@ function Navigation() {
   return (
     <div>
       <header>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light ps-5">
-          <Link className="navbar-brand" to="/">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark ps-5">
+          <Link className="navbar-brand text-warning" to="/">
             FlavourOfHealth
           </Link>
           <button
@@ -27,49 +27,47 @@ function Navigation() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            className={`collapse navbar-collapse justify-content-center ${
-              isOpen ? "show" : ""
-            }`}
+            className={`collapse navbar-collapse justify-content-center ${isOpen ? "show" : ""}`}
             id="navbarNav"
           >
             <ul className="navbar-nav topBottomBordersOut">
               <li className="nav-item">
-                <Link className="nav-link px-3" to="/">
+                <Link className="nav-link px-3 text-light" to="/">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link px-3" to="/about">
+                <Link className="nav-link px-3 text-light" to="/about">
                   About
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link px-3" to="/recipes">
+                <Link className="nav-link px-3 text-light" to="/recipes">
                   Recipes
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link px-3" to="/nutrition">
+                <Link className="nav-link px-3 text-light" to="/nutrition">
                   Nutrition
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link px-3" to="/services">
+                <Link className="nav-link px-3 text-light" to="/services">
                   Services
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link px-3" to="/book-online">
+                <Link className="nav-link px-3 text-light" to="/book-online">
                   Book Online
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link px-3" to="/add-recipe">
+                <Link className="nav-link px-3 text-light" to="/add-recipe">
                   Add New Recipe
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link px-3" to="/add-article">
+                <Link className="nav-link px-3 text-light" to="/add-article">
                   Add New Article
                 </Link>
               </li>
