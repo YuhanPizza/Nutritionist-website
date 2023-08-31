@@ -55,11 +55,6 @@ function Navigation() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link px-3 text-light" to="/book-online">
-                  <i className="fa fa-calendar"></i> Book Online
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link className="nav-link px-3 text-light" to="/add-recipe">
                   <i className="fa fa-plus-circle"></i> Add New Recipe
                 </Link>
