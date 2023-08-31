@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./styles/Navigation.css"; // You can still use this for any custom styles you may have
+import 'font-awesome/css/font-awesome.min.css';
+import "./styles/Navigation.css"; // Your custom CSS can still be used
 
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ function Navigation() {
       <header>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark ps-5">
           <Link className="navbar-brand text-warning" to="/">
-            FlavourOfHealth
+            <i className="fa fa-cutlery"></i> FlavourOfHealth
           </Link>
           <button
             className="navbar-toggler"
@@ -26,49 +27,46 @@ function Navigation() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div
-            className={`collapse navbar-collapse justify-content-center ${isOpen ? "show" : ""}`}
-            id="navbarNav"
-          >
+          <div className={`collapse navbar-collapse justify-content-center ${isOpen ? "show" : ""}`} id="navbarNav">
             <ul className="navbar-nav topBottomBordersOut">
               <li className="nav-item">
                 <Link className="nav-link px-3 text-light" to="/">
-                  Home
+                  <i className="fa fa-home"></i> Home
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link px-3 text-light" to="/about">
-                  About
+                  <i className="fa fa-info-circle"></i> About
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link px-3 text-light" to="/recipes">
-                  Recipes
+                <i className="fa fa-book"></i> Recipes
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link px-3 text-light" to="/nutrition">
-                  Nutrition
+                  <i className="fa fa-apple"></i> Nutrition
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link px-3 text-light" to="/services">
-                  Services
+                  <i className="fa fa-bell"></i> Services
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link px-3 text-light" to="/book-online">
-                  Book Online
+                  <i className="fa fa-calendar"></i> Book Online
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link px-3 text-light" to="/add-recipe">
-                  Add New Recipe
+                  <i className="fa fa-plus-circle"></i> Add New Recipe
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link px-3 text-light" to="/add-article">
-                  Add New Article
+                  <i className="fa fa-plus-circle"></i> Add New Article
                 </Link>
               </li>
             </ul>
