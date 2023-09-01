@@ -28,13 +28,13 @@ function Home() {
   useEffect(() => {
     axios.get('http://localhost:5020/recipes')
       .then(response => {
-        setRecipes(response.data.slice(0, 3));
+        setRecipes(response.data.reverse().slice(0, 3));
       })
       .catch(error => console.error(error));
-
+  
     axios.get('http://localhost:5020/articles')
       .then(response => {
-        setArticles(response.data.slice(0, 3));
+        setArticles(response.data.reverse().slice(0, 3));
       })
       .catch(error => console.error(error));
   }, []);

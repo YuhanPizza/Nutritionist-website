@@ -6,7 +6,6 @@ import About from './About';
 import RecipeList from './Recipes';
 import Nutrition from './Nutrition';
 import Services from './Services';
-import BookOnline from './BookOnline';
 import Navigation from './Navigation';
 import AddRecipe from './AddRecipe';
 import Recipe from './Recipe';
@@ -25,7 +24,6 @@ function App() {
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/article/:id" element={<Article />} />
         <Route path="/services" element={<Services/>} />
-        <Route path="/book-online" element={<BookOnline/>} />
         <Route path="/add-recipe" element={<AddRecipe/>}/>
         <Route path="/add-article" element={<AddArticle/>}/>
         {/* Add more routes as needed */}
