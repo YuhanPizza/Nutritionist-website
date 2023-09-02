@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "./styles/Form.css";
 
 interface FormData {
   name: string;
@@ -16,7 +17,7 @@ const RecipeForm = () => {
     tag: [],
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -39,9 +40,9 @@ const RecipeForm = () => {
     }
     try {
       const response = await axios.post('http://localhost:5020/addRecipe', data,{
-        headers: { 'Contet-Type ': 'multipart/form-data'}
+        headers: { 'Content-Type': 'multipart/form-data'}
       });
-      console.log('Recipe added:', response.data);
+      console.log('New Recipe added:', response.data);
     } catch (error) {
       console.error('An error occurred:', error);
     }
@@ -55,15 +56,15 @@ const RecipeForm = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">Name</label>
-              <input type="text" className="form-control" id="name" name="name" placeholder="Enter recipe name" onChange={handleChange} />
+              <input type="text" className="form-control" id="name" name="name" placeholder="Enter Recipe Name" onChange={handleChange} />
             </div>
             <div className="mb-3">
               <label htmlFor="image" className="form-label">Image URL</label>
               <input type="file" className="form-control" id="image" name="image" placeholder="Upload image" onChange={handleImageChange} />
             </div>
-            <div className="mb-3">
+            <div className="mb-3 preserve-whitespace">
               <label htmlFor="description" className="form-label">Description</label>
-              <input type="text" className="form-control" id="description" name="description" placeholder="Enter description" onChange={handleChange} />
+              <textarea className="form-control" id="description" name="description" rows={5} placeholder="Enter description" onChange={handleChange} />
             </div>
             <div className="mb-3">
               <label htmlFor="tag" className="form-label">Tags</label>

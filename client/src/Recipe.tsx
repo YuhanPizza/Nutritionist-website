@@ -37,7 +37,7 @@ function Recipe() {
           />
           <Card.Body>
             <Card.Title>{recipe.name}</Card.Title>
-            <Card.Text>{recipe.description}</Card.Text>
+            <Card.Text dangerouslySetInnerHTML={{ __html: recipe.description.replace(/\n/g, '<br />') }} />
           </Card.Body>
           <Card.Footer>
             <small>{recipe.tag}</small>

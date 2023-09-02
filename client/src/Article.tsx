@@ -37,7 +37,7 @@ function Article() {
           />
           <Card.Body>
             <Card.Title>{article.name}</Card.Title>
-            <Card.Text>{article.description}</Card.Text>
+            <Card.Text dangerouslySetInnerHTML={{ __html: article.description.replace(/\n/g, '<br />') }} />
           </Card.Body>
           <Card.Footer>
             <small>{article.tag}</small>
