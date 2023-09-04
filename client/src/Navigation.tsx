@@ -1,10 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 import 'font-awesome/css/font-awesome.min.css';
 import "./styles/Navigation.css"; // Your custom CSS can still be used
-
+interface DecodedToken{
+  role: string;
+}
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOwner, setIsOwner] = useState(false); // New state to check if owner
+
+  useEffect(() => {
+    // Fetch the token from localStorage
+    const token = localStorage.getItem('token');
+
+    // If a token exists, decode it to check for role
+    if (token) {
+      const decodedToken: DecodedToken = jwt_decode(token);
+      if (decodedToken.role && decodedToken.role === 'owner') {
+        setIsOwner(true);
+      }
+    }
+  }, []); // Empty dependency array ensures this runs once when the component mounts
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -41,7 +58,7 @@ function Navigation() {
               </li>
               <li className="nav-item">
                 <Link className="nav-link px-3 text-light" to="/recipes">
-                <i className="fa fa-book"></i> Recipes
+                  <i className="fa fa-book"></i> Recipes
                 </Link>
               </li>
               <li className="nav-item">
@@ -54,16 +71,22 @@ function Navigation() {
                   <i className="fa fa-bell"></i> Services
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link px-3 text-light" to="/add-recipe">
-                  <i className="fa fa-plus-circle"></i> Add New Recipe
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link px-3 text-light" to="/add-article">
-                  <i className="fa fa-plus-circle"></i> Add New Article
-                </Link>
-              </li>
+
+              {/* Display Add New Recipe and Add New Article links only for the owner */}
+              {isOwner && (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link px-3 text-light" to="/add-recipe">
+                      <i className="fa fa-plus-circle"></i> Add New Recipe
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link px-3 text-light" to="/add-article">
+                      <i className="fa fa-plus-circle"></i> Add New Article
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </nav>

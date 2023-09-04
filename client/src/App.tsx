@@ -11,6 +11,7 @@ import AddRecipe from './AddRecipe';
 import Recipe from './Recipe';
 import AddArticle from './AddArticle';
 import Article from './Article';
+import LoginPage from './AdminLogin';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/services" element={<Services/>} />
         <Route path="/add-recipe" element={<AddRecipe/>}/>
         <Route path="/add-article" element={<AddArticle/>}/>
+        <Route path="/admin-login" element={<LoginPage/>}/>
         {/* Add more routes as needed */}
       </Routes>
     </Router>
