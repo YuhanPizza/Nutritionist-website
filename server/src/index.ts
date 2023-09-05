@@ -40,6 +40,7 @@ const app = express();
 const PORT = 5020;
 const jwt = require("jsonwebtoken");
 
+
 // Middleware for parsing JSON data
 app.use(cors());
 app.use(express.json());
@@ -49,7 +50,7 @@ app.post('/adminLogin', (req, res) => {
     const { username, password } = req.body;
   
     if (username === 'Potato1234' && password === 'Potato6969#') {
-      const token = jwt.sign({ role: 'owner', username }, 'myHardcodedSecretKey123!', { expiresIn: '1h' });
+      const token = jwt.sign({ role: 'owner', username }, 'myHardcodedSecretKey123!', { expiresIn: "1h" });
       res.json({ token });
     } else {
       res.status(401).json({ error: 'Invalid credentials' });

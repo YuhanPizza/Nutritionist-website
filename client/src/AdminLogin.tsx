@@ -1,35 +1,44 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
-import { faEye as farEye } from '@fortawesome/free-regular-svg-icons';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEye as farEye } from "@fortawesome/free-regular-svg-icons";
 
 const LoginPage: React.FC = () => {
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      window.location.href = "/";
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5020/adminLogin', {
+      const response = await axios.post("http://localhost:5020/adminLogin", {
         username,
         password,
       });
+
       if (response.data.token) {
-        localStorage.setItem('token', response.data.token);
-        window.location.href = '/';
+        localStorage.setItem("token", response.data.token);
+
+        window.location.href = "/";
       }
     } catch (err) {
-      setError('Invalid username or password');
+      setError("Invalid username or password");
     }
   };
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
-      <div className="card" style={{ width: '300px' }}>
+      <div className="card" style={{ width: "300px" }}>
         <div className="card-body">
           <h1 className="card-title text-center">Login</h1>
           <form onSubmit={handleSubmit}>
@@ -59,7 +68,9 @@ const LoginPage: React.FC = () => {
                 <FontAwesomeIcon icon={showPassword ? faEye : farEye} />
               </button>
             </div>
-            <button type="submit" className="btn btn-danger w-100">Login</button>
+            <button type="submit" className="btn btn-danger w-100">
+              Login
+            </button>
           </form>
           {error && <p className="text-danger mt-3">{error}</p>}
         </div>

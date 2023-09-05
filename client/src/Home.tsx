@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { Card, Row, Col, Container } from 'react-bootstrap';
-import './styles/Home.css';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Card, Row, Col, Container } from "react-bootstrap";
+import "./styles/Home.css";
 
 interface RecipeType {
   _id: string;
@@ -26,17 +26,19 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5020/recipes')
-      .then(response => {
+    axios
+      .get("http://localhost:5020/recipes")
+      .then((response) => {
         setRecipes(response.data.reverse().slice(0, 3));
       })
-      .catch(error => console.error(error));
-  
-    axios.get('http://localhost:5020/articles')
-      .then(response => {
+      .catch((error) => console.error(error));
+
+    axios
+      .get("http://localhost:5020/articles")
+      .then((response) => {
         setArticles(response.data.reverse().slice(0, 3));
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   }, []);
 
   const goToOuterCard = (path: string) => {
@@ -57,41 +59,56 @@ function Home() {
     <Container className="mt-4">
       <Row className="justify-content-center">
         <Col md={10}>
-          <h2 className="text-center title">Hi I'm Candace, Welcome to my Website</h2>
+          <h2 className="text-center title">
+            Hi I'm Candace, Welcome to my Website
+          </h2>
 
-          <Card className="clickable-card mb-4" onClick={() => goToOuterCard("/recipes")}>
+          <Card
+            className="clickable-card mb-4"
+            onClick={() => goToOuterCard("/recipes")}
+          >
             <Card.Body>
               <Card.Title className="text-center">Featured Recipes</Card.Title>
-              <Container style={{ marginTop: '20px' }}>
+              <Container style={{ marginTop: "20px" }}>
                 <Row className="justify-content-center">
-                  {recipes.map((recipe) => (
-                    <Col sm={12} md={4} lg={4} className="d-flex justify-content-center mb-3">
+                  {recipes.map((recipe, key) => (
+                    <Col
+                      key={key}
+                      sm={12}
+                      md={4}
+                      lg={4}
+                      className="d-flex justify-content-center mb-3"
+                    >
                       <Card
                         bg="rgba(0, 0, 0)"
-                        style={{ width:'250px', height:'200px' }}
+                        style={{ width: "250px", height: "200px" }}
                         onClick={(event) => goToRecipe(event, recipe._id)}
                       >
                         <Card.Img
                           variant="top"
                           src={recipe.image}
                           style={{
-                            height: '200px',
-                            objectFit: 'cover',
+                            height: "200px",
+                            objectFit: "cover",
                           }}
                         />
-                        <Card.ImgOverlay style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
-                          <Card.Title style={{ color: 'white' }}>{recipe.name}</Card.Title>
+                        <Card.ImgOverlay
+                          style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
+                        >
+                          <Card.Title style={{ color: "white" }}>
+                            {recipe.name}
+                          </Card.Title>
                           <Card.Text
                             style={{
-                              color: 'white',
-                              whiteSpace: 'nowrap',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
+                              color: "white",
+                              whiteSpace: "nowrap",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
                             }}
                           >
                             {recipe.description}
                           </Card.Text>
-                          <Card.Footer style={{ color: 'white' }}>
+                          <Card.Footer style={{ color: "white" }}>
                             <small>{recipe.tag}</small>
                           </Card.Footer>
                         </Card.ImgOverlay>
@@ -103,39 +120,52 @@ function Home() {
             </Card.Body>
           </Card>
 
-          <Card className="clickable-card mb-4" onClick={() => goToOuterCard("/nutrition")}>
+          <Card
+            className="clickable-card mb-4"
+            onClick={() => goToOuterCard("/nutrition")}
+          >
             <Card.Body>
               <Card.Title className="text-center">Featured Articles</Card.Title>
-              <Container style={{ marginTop: '20px' }}>
+              <Container style={{ marginTop: "20px" }}>
                 <Row className="justify-content-center">
-                  {articles.map((article) => (
-                    <Col sm={12} md={4} lg={4} className="d-flex justify-content-center mb-3">
+                  {articles.map((article, key) => (
+                    <Col
+                      key={key}
+                      sm={12}
+                      md={4}
+                      lg={4}
+                      className="d-flex justify-content-center mb-3"
+                    >
                       <Card
                         bg="rgba(0, 0, 0)"
-                        style={{ width:'250px', height:'200px' }}
+                        style={{ width: "250px", height: "200px" }}
                         onClick={(event) => goToArticle(event, article._id)}
                       >
                         <Card.Img
                           variant="top"
                           src={article.image}
                           style={{
-                            height: '200px',
-                            objectFit: 'cover',
+                            height: "200px",
+                            objectFit: "cover",
                           }}
                         />
-                        <Card.ImgOverlay style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
-                          <Card.Title style={{ color: 'white' }}>{article.name}</Card.Title>
+                        <Card.ImgOverlay
+                          style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
+                        >
+                          <Card.Title style={{ color: "white" }}>
+                            {article.name}
+                          </Card.Title>
                           <Card.Text
                             style={{
-                              color: 'white',
-                              whiteSpace: 'nowrap',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
+                              color: "white",
+                              whiteSpace: "nowrap",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
                             }}
                           >
                             {article.description}
                           </Card.Text>
-                          <Card.Footer style={{ color: 'white' }}>
+                          <Card.Footer style={{ color: "white" }}>
                             <small>{article.tag}</small>
                           </Card.Footer>
                         </Card.ImgOverlay>
@@ -152,17 +182,25 @@ function Home() {
               <div className="card-body">
                 <div className="row">
                   <div className="col-md-4 text-center">
-                    <img src="https://via.placeholder.com/150" alt="Placeholder" className="img-fluid mb-3" />
+                    <img
+                      src="https://via.placeholder.com/150"
+                      alt="Placeholder"
+                      className="img-fluid mb-3"
+                    />
                   </div>
                   <div className="col-md-8">
                     <h3>About Me</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </Link>
-
         </Col>
       </Row>
     </Container>

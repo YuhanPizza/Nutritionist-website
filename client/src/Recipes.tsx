@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Row, Col, Container } from "react-bootstrap";
@@ -34,8 +34,8 @@ function RecipeList() {
   return (
     <Container style={{ marginTop: "50px" }}>
       <Row>
-        {recipes.map((recipe) => (
-          <Col sm={12} md={6} lg={3} style={{ marginBottom: "20px" }}>
+        {recipes.map((recipe, key) => (
+          <Col key={key} sm={12} md={6} lg={3} style={{ marginBottom: "20px" }}>
             <Card
               bg="rgba(0, 0, 0)"
               style={{ margin: "10px", position: "relative" }}
@@ -49,8 +49,12 @@ function RecipeList() {
                   objectFit: "cover",
                 }}
               />
-              <Card.ImgOverlay style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}>
-                <Card.Title style={{ color: "white" }}>{recipe.name}</Card.Title>
+              <Card.ImgOverlay
+                style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
+              >
+                <Card.Title style={{ color: "white" }}>
+                  {recipe.name}
+                </Card.Title>
                 <Card.Text
                   style={{
                     color: "white",
