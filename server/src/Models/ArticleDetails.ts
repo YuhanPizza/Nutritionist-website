@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 //const ObjectId = mongoose.Types.ObjectId;
 
-//Recipe
+//Article
 const ArticleSchema = new Schema({
     name: {
       type: String,

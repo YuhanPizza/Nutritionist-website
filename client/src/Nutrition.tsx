@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Row, Col, Container } from "react-bootstrap";
+import { Card, Row, Col, Container, InputGroup, FormControl, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 interface ArticleType {
@@ -14,18 +13,28 @@ interface ArticleType {
 
 function ArticleList() {
   const [articles, setArticles] = useState<ArticleType[]>([]);
+  const [searchTag, setSearchTag] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5020/articles")
-      .then((response) => {
+  const fetchArticles = (tag = '') => {
+    const url = tag ? `http://localhost:5020/searchArticles?tag=${tag}` : "http://localhost:5020/articles";
+    
+    axios.get(url)
+      .then(response => {
         setArticles(response.data);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error("There was an error fetching the data:", error);
       });
+  };
+
+  useEffect(() => {
+    fetchArticles();
   }, []);
+
+  const handleSearch = () => {
+    fetchArticles(searchTag);
+  };
 
   const goToArticle = (id: string) => {
     navigate(`/article/${id}`);
@@ -33,6 +42,16 @@ function ArticleList() {
 
   return (
     <Container style={{ marginTop: "50px" }}>
+<InputGroup className="mb-3">
+    <FormControl
+        placeholder="Search by tag"
+        value={searchTag}
+        onChange={e => setSearchTag(e.target.value)}
+    />
+    <div className="input-group-append">
+        <Button variant="outline-secondary" onClick={handleSearch}>Search</Button>
+    </div>
+</InputGroup>
       <Row>
         {articles.map((article) => (
           <Col sm={12} md={6} lg={3} style={{ marginBottom: "20px" }}>

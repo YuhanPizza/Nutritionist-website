@@ -167,6 +167,68 @@ app.get('/article/:id', async (req: Request, res: Response) => {
       res.status(500).json({ message: "Internal Server Error" });
     }
 });
+// Search for recipes with the same tag, case-insensitive
+app.get('/searchRecipes', async (req: Request, res: Response) => {
+    try {
+        const tagQuery = req.query.tag;
+        console.log("Query Tag:", tagQuery); // Debug log
+
+        if (tagQuery === undefined || tagQuery === null) {
+            return res.status(400).json({ message: "Tag is required for searching" });
+        }
+
+        const tagArray: string[] = Array.isArray(tagQuery) ? (tagQuery as string[]) : [tagQuery as string];
+        console.log("Tag Array:", tagArray); // Debug log
+
+        // Convert tags to lowercase and build regex patterns
+        const regexTags = tagArray.map(tag => new RegExp(`\\b${tag.toLowerCase()}\\b`, 'i'));
+        console.log("Regex Tags:", regexTags); // Debug log
+
+        // Search in the MongoDB database, case-insensitive
+        const recipes = await RecipeModel.find({
+            tag: { $in: regexTags }
+        });
+
+        console.log("Found Articles:", recipes); // Debug log
+
+        res.status(200).json(recipes);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+// Search for articles with the same tag, case-insensitive
+app.get('/searchArticles', async (req: Request, res: Response) => {
+    try {
+        const tagQuery = req.query.tag;
+        console.log("Query Tag:", tagQuery); // Debug log
+
+        if (tagQuery === undefined || tagQuery === null) {
+            return res.status(400).json({ message: "Tag is required for searching" });
+        }
+
+        const tagArray: string[] = Array.isArray(tagQuery) ? (tagQuery as string[]) : [tagQuery as string];
+        console.log("Tag Array:", tagArray); // Debug log
+
+        // Convert tags to lowercase and build regex patterns
+        const regexTags = tagArray.map(tag => new RegExp(`\\b${tag.toLowerCase()}\\b`, 'i'));
+        console.log("Regex Tags:", regexTags); // Debug log
+
+        // Search in the MongoDB database, case-insensitive
+        const articles = await ArticleModel.find({
+            tag: { $in: regexTags }
+        });
+
+        console.log("Found Articles:", articles); // Debug log
+
+        res.status(200).json(articles);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
 mongoose.connect('mongodb+srv://candacecheung9637:test123@cluster0.uxfb0nz.mongodb.net/?retryWrites=true&w=majority').then(() => {
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);

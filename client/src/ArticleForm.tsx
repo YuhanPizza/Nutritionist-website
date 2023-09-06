@@ -28,7 +28,8 @@ const ArticleForm = () => {
   };
 
   const handleTagChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const tags = e.target.value.split(',');
+    const tags = e.target.value.split(',').map(tag => tag.trim());
+    console.log("Split and Trimmed Tags:", tags);
     setFormData({ ...formData, tag: tags });
   };
 
