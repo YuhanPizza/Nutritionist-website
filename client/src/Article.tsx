@@ -29,20 +29,21 @@ function Article() {
   return (
     <Container style={{ marginTop: "20px" }}>
       {article ? (
-        <Card>
-          <Card.Img
-            variant="top"
-            src={article.image}
-            style={{ height: "400px", objectFit: "cover" }}
-          />
-          <Card.Body>
-            <Card.Title>{article.name}</Card.Title>
-            <Card.Text dangerouslySetInnerHTML={{ __html: article.description.replace(/\n/g, '<br />') }} />
-          </Card.Body>
-          <Card.Footer>
-            <small>{article.tag}</small>
-          </Card.Footer>
-        </Card>
+        <>
+          <h1 style={{ marginBottom: "20px", textAlign: "center" }}>{article.name}</h1>
+          <Card>
+            <Card.Img
+              variant="top"
+              src={article.image}
+            />
+            <Card.Body style={{ textAlign: "left" }}>
+              <Card.Text dangerouslySetInnerHTML={{ __html: article.description.replace(/\n/g, '<br />') }} />
+            </Card.Body>
+            <Card.Footer>
+              <small>{article.tag}</small>
+            </Card.Footer>
+          </Card>
+        </>
       ) : (
         <p>Loading...</p>
       )}

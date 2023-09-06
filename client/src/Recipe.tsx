@@ -29,20 +29,21 @@ function Recipe() {
   return (
     <Container style={{ marginTop: "20px" }}>
       {recipe ? (
-        <Card>
-          <Card.Img
-            variant="top"
-            src={recipe.image}
-            style={{ height: "400px", objectFit: "cover" }}
-          />
-          <Card.Body>
-            <Card.Title>{recipe.name}</Card.Title>
-            <Card.Text dangerouslySetInnerHTML={{ __html: recipe.description.replace(/\n/g, '<br />') }} />
-          </Card.Body>
-          <Card.Footer>
-            <small>{recipe.tag}</small>
-          </Card.Footer>
-        </Card>
+        <>
+          <h1 style={{ marginBottom: "20px", textAlign: "center" }}>{recipe.name}</h1>
+          <Card>
+            <Card.Img
+              variant="top"
+              src={recipe.image}
+            />
+            <Card.Body style={{ textAlign: "left" }}>
+              <Card.Text dangerouslySetInnerHTML={{ __html: recipe.description.replace(/\n/g, '<br />') }} />
+            </Card.Body>
+            <Card.Footer>
+              <small>{recipe.tag}</small>
+            </Card.Footer>
+          </Card>
+        </>
       ) : (
         <p>Loading...</p>
       )}

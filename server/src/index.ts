@@ -178,7 +178,7 @@ app.get('/searchRecipes', async (req: Request, res: Response) => {
         }
 
         const tagArray: string[] = Array.isArray(tagQuery) ? (tagQuery as string[]) : [tagQuery as string];
-        console.log("Tag Array:", tagArray); // Debug log
+        //console.log("Tag Array:", tagArray); // Debug log
 
         // Convert tags to lowercase and build regex patterns
         const regexTags = tagArray.map(tag => new RegExp(`\\b${tag.toLowerCase()}\\b`, 'i'));
@@ -189,7 +189,7 @@ app.get('/searchRecipes', async (req: Request, res: Response) => {
             tag: { $in: regexTags }
         });
 
-        console.log("Found Articles:", recipes); // Debug log
+        console.log("Found Recipes:", recipes); // Debug log
 
         res.status(200).json(recipes);
     } catch (error) {
@@ -209,7 +209,7 @@ app.get('/searchArticles', async (req: Request, res: Response) => {
         }
 
         const tagArray: string[] = Array.isArray(tagQuery) ? (tagQuery as string[]) : [tagQuery as string];
-        console.log("Tag Array:", tagArray); // Debug log
+        //console.log("Tag Array:", tagArray); // Debug log
 
         // Convert tags to lowercase and build regex patterns
         const regexTags = tagArray.map(tag => new RegExp(`\\b${tag.toLowerCase()}\\b`, 'i'));
