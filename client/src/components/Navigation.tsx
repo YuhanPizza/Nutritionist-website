@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { JwtPayload } from "jwt-decode";
 import "font-awesome/css/font-awesome.min.css";
-import "./styles/Navigation.css"; // Your custom CSS can still be used
+import "../styles/Main.css"; // Your custom CSS can still be used
 import jwtDecode from "jwt-decode";
 
 function Navigation() {

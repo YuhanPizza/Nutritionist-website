@@ -40,3 +40,27 @@ ul.topBottomBordersOut li:hover:before, ul.topBottomBordersOut li:hover:after
 .navbar a  {
     color: #016A70!important;
 }
+.preserve-whitespace {
+    white-space: pre-line;
+}
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #002d30;
+}
+  
+.clickable-card {
+    cursor: pointer;
+}
+  
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #005b61;
+}
+  
+.card-body {
+    padding: 1.5rem;
+}
+ 

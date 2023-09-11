@@ -1,17 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './Home';
-import About from './About';
-import RecipeList from './Recipes';
-import Nutrition from './Nutrition';
-import Services from './Services';
-import Navigation from './Navigation';
-import AddRecipe from './AddRecipe';
-import Recipe from './Recipe';
-import AddArticle from './AddArticle';
-import Article from './Article';
-import LoginPage from './AdminLogin';
+import Home from './components/Home';
+import About from './components/About';
+import RecipeList from './components/Recipes';
+import Nutrition from './components/Nutrition';
+import Services from './components/Services';
+import Navigation from './components/Navigation';
+import AddRecipe from './components/AddRecipe';
+import Recipe from './components/Recipe';
+import AddArticle from './components/AddArticle';
+import Article from './components/Article';
+import LoginPage from './components/AdminLogin';
 
 function App() {
   return (

@@ -8,7 +8,9 @@ import ArticleModel from "./Models/ArticleDetails";
 import multer from 'multer';
 import streamifier from "streamifier";
 
+
 const upload = multer();
+
 
 interface ResultType {
     secure_url: string;

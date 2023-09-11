@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Card, Row, Col, Container } from "react-bootstrap";
-import "./styles/Home.css";
+import "../styles/Main.css";
 
 interface RecipeType {
   _id: string;
@@ -68,7 +68,7 @@ function Home() {
             onClick={() => goToOuterCard("/recipes")}
           >
             <Card.Body>
-              <Card.Title className="text-center">Featured Recipes</Card.Title>
+              <Card.Title className="text-center">Recent Recipes</Card.Title>
               <Container style={{ marginTop: "20px" }}>
                 <Row className="justify-content-center">
                   {recipes.map((recipe, key) => (
@@ -125,7 +125,7 @@ function Home() {
             onClick={() => goToOuterCard("/nutrition")}
           >
             <Card.Body>
-              <Card.Title className="text-center">Featured Articles</Card.Title>
+              <Card.Title className="text-center">Recent Articles</Card.Title>
               <Container style={{ marginTop: "20px" }}>
                 <Row className="justify-content-center">
                   {articles.map((article, key) => (
@@ -183,18 +183,20 @@ function Home() {
                 <div className="row">
                   <div className="col-md-4 text-center">
                     <img
-                      src="https://via.placeholder.com/150"
+                      src="https://res.cloudinary.com/dusfrwsg5/image/upload/v1694385255/headshot_efwg6v.jpg"
                       alt="Placeholder"
                       className="img-fluid mb-3"
+                      width="200"
                     />
                   </div>
                   <div className="col-md-8">
                     <h3>About Me</h3>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      Hi, I am Candace. I'm not just your average nutritionist; I'm also a passionate foodie on a mission to help 
+                      you unlock your full wellness potential. My goal is to empower individuals to lead a healthy and vibrant 
+                      life through the magic of nutrition. Here you'll find lots of nourishing and tasty recipes, advice on making
+                      nutritious choices, and nutrition myths debunked! For more information, check out my bio. Together, we'll 
+                      embark on a flavorful and fulfilling adventure towards a healthier you!
                     </p>
                   </div>
                 </div>
