@@ -36,7 +36,7 @@ Our talented "chefs" in the front-end kitchen have whipped up some key TSX files
 - **Recipes.tsx**: A smorgasbord of recipes.
 - **Services.tsx**: Discover our health offerings.
 
-### Back-end Magic 🎩✨
+### Back-end Sorcery 🎩✨
 
 Behind the scenes, our back-end is powered by Node.js, Express, and MongoDB. It's like the kitchen where all the magic happens. Here are the key ingredients:
 
