@@ -1,5 +1,5 @@
 # Welcome to FlavourOfHealth: Your Nutritional Hub 🍏🥦🍳
-The website is available on render. Try it out [Here](https://flavourofhealth.onrender.com/recipes)
+The website is available on render. Try it out [Here](https://flavourofhealth.onrender.com/)
 
 FlavourOfHealth isn't just a website; it's your one-stop destination for all things nutrition and healthy cooking. We've put together a feature-packed web application that's all about giving you the knowledge and tools you need to lead a healthier lifestyle. Here's a closer look:
 
