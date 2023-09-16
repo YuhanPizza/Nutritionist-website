@@ -40,7 +40,7 @@ const ArticleForm = () => {
       data.append(key, value);
     }
     try {
-      const response = await axios.post('http://localhost:5020/addArticle', data,{
+      const response = await axios.post('https://FlavourOfHealth-api.onrender.com/addArticle', data,{
         headers: { 'Content-Type': 'multipart/form-data'}
       });
       console.log('New Article added:', response.data);

@@ -39,7 +39,7 @@ const RecipeForm = () => {
       data.append(key, value);
     }
     try {
-      const response = await axios.post('http://localhost:5020/addRecipe', data,{
+      const response = await axios.post('https://FlavourOfHealth-api.onrender.com/addRecipe', data,{
         headers: { 'Content-Type': 'multipart/form-data'}
       });
       console.log('New Recipe added:', response.data);

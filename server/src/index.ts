@@ -38,8 +38,8 @@ cloudinary.v2.config({
     api_key: "213224212869577",
     api_secret: "_m0gWsKSCmTZADZl90nZkXkGj30"
 });
-const app = express();
-const PORT = 5020;
+const app = express(); //express setup 
+const HTTP_PORT = process.env.PORT || 5020; //PORT SETUP
 const jwt = require("jsonwebtoken");
 
 
@@ -232,7 +232,7 @@ app.get('/searchArticles', async (req: Request, res: Response) => {
 });
 
 mongoose.connect('mongodb+srv://candacecheung9637:test123@cluster0.uxfb0nz.mongodb.net/?retryWrites=true&w=majority').then(() => {
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
+    app.listen(HTTP_PORT, () => {
+        console.log(`Server is running on port ${HTTP_PORT}`);
     });
 });

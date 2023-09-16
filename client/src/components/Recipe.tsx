@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Card, Container } from "react-bootstrap";
@@ -17,7 +17,7 @@ function Recipe() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5020/recipe/${id}`)
+      .get(`https://FlavourOfHealth-api.onrender.com/recipe/${id}`)
       .then((response) => {
         setRecipe(response.data);
       })

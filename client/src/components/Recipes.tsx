@@ -18,7 +18,7 @@ function RecipeList() {
   const navigate = useNavigate();
 
   const fetchRecipes = (tag = '') => {
-    const url = tag ? `http://localhost:5020/searchRecipes?tag=${tag}` : "http://localhost:5020/recipes";
+    const url = tag ? `https://FlavourOfHealth-api.onrender.com/searchRecipes?tag=${tag}` : "https://FlavourOfHealth-api.onrender.com/recipes";
     
     axios.get(url)
       .then(response => {

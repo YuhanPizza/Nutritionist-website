@@ -27,14 +27,14 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5020/recipes")
+      .get("https://FlavourOfHealth-api.onrender.com/recipes")
       .then((response) => {
         setRecipes(response.data.reverse().slice(0, 3));
       })
       .catch((error) => console.error(error));
 
     axios
-      .get("http://localhost:5020/articles")
+      .get("https://FlavourOfHealth-api.onrender.com/articles")
       .then((response) => {
         setArticles(response.data.reverse().slice(0, 3));
       })

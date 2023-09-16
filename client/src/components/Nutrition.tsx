@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Card, Row, Col, Container, InputGroup, FormControl, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ function ArticleList() {
   const navigate = useNavigate();
 
   const fetchArticles = (tag = '') => {
-    const url = tag ? `http://localhost:5020/searchArticles?tag=${tag}` : "http://localhost:5020/articles";
+    const url = tag ? `https://FlavourOfHealth-api.onrender.com/searchArticles?tag=${tag}` : "https://FlavourOfHealth-api.onrender.com/articles";
     
     axios.get(url)
       .then(response => {

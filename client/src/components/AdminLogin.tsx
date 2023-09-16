@@ -21,7 +21,7 @@ const LoginPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5020/adminLogin", {
+      const response = await axios.post("https://FlavourOfHealth-api.onrender.com/adminLogin", {
         username,
         password,
       });
