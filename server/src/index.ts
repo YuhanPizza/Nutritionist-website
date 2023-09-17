@@ -7,6 +7,7 @@ import RecipeModel from "./Models/RecipeDetails";
 import ArticleModel from "./Models/ArticleDetails";
 import multer from 'multer';
 import streamifier from "streamifier";
+import path from 'path';
 
 
 const upload = multer();
@@ -44,8 +45,11 @@ const jwt = require("jsonwebtoken");
 
 
 // Middleware for parsing JSON data
-app.use(cors());
+app.use(cors({
+    origin: "https://flavourofhealth.onrender.com/",
+}));
 app.use(express.json());
+
 
 //admin Login
 app.post('/adminLogin', (req, res) => {
@@ -230,7 +234,10 @@ app.get('/searchArticles', async (req: Request, res: Response) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
-
+app.use(express.static(path.join(__dirname, "client", "build")));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client','build', 'index.html'));
+});
 mongoose.connect('mongodb+srv://candacecheung9637:test123@cluster0.uxfb0nz.mongodb.net/?retryWrites=true&w=majority').then(() => {
     app.listen(HTTP_PORT, () => {
         console.log(`Server is running on port ${HTTP_PORT}`);
