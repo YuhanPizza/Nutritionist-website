@@ -232,13 +232,22 @@ app.get('/searchArticles', async (req: Request, res: Response) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
+
+//SHIT I TRIED TO DO TO FIX THE BROWSER ROUTING STUFF--------------------------------- 
+if(process.env.NODE_ENV !== 'production'){
 // Serve static assets from the 'client/build' directory
 app.use(express.static(path.join(__dirname,'..', '..', 'client')));
 
 // Catch-all route to serve the 'index.html' for all other routes
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', '..', 'client', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', '..', 'client', 'index.html'));//also delete this in the server side.
 });
+}else{
+    app.get("/", (req,res)=>{
+        res.send("Please set to Production")
+    })
+}
+//----------------------------------------------------------------------------------
 mongoose.connect('mongodb+srv://candacecheung9637:test123@cluster0.uxfb0nz.mongodb.net/?retryWrites=true&w=majority').then(() => {
     app.listen(HTTP_PORT, () => {
         console.log(`Server is running on port ${HTTP_PORT}`);
