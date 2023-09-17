@@ -45,9 +45,7 @@ const jwt = require("jsonwebtoken");
 
 
 // Middleware for parsing JSON data
-app.use(cors({
-    origin: "https://flavourofhealth.onrender.com/",
-}));
+app.use(cors());
 app.use(express.json());
 
 
@@ -235,11 +233,11 @@ app.get('/searchArticles', async (req: Request, res: Response) => {
     }
 });
 // Serve static assets from the 'client/build' directory
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+app.use(express.static(path.join(__dirname, '..', 'client', 'src')));
 
 // Catch-all route to serve the 'index.html' for all other routes
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'client', 'src', 'index.html'));
 });
 mongoose.connect('mongodb+srv://candacecheung9637:test123@cluster0.uxfb0nz.mongodb.net/?retryWrites=true&w=majority').then(() => {
     app.listen(HTTP_PORT, () => {
