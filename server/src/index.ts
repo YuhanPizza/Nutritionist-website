@@ -47,7 +47,12 @@ const jwt = require("jsonwebtoken");
 // Middleware for parsing JSON data
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '..', 'client')));
 
+//Catch all
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+  });
 
 //admin Login
 app.post('/adminLogin', (req, res) => {
