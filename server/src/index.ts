@@ -49,11 +49,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'client')));
 
-//Catch all
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..','..', 'client', 'index.html'));
-  });
-
 //admin Login
 app.post('/adminLogin', (req, res) => {
     const { username, password } = req.body;
@@ -237,6 +232,12 @@ app.get('/searchArticles', async (req: Request, res: Response) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
+
+//Catch all
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..','..', 'client', 'index.html'));
+});
+
 mongoose.connect('mongodb+srv://candacecheung9637:test123@cluster0.uxfb0nz.mongodb.net/?retryWrites=true&w=majority').then(() => {
     app.listen(HTTP_PORT, () => {
         console.log(`Server is running on port ${HTTP_PORT}`);
