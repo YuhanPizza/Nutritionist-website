@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 import "../styles/Main.css";
+import { Toast } from 'react-bootstrap';
 
 interface FormData {
   name: string;
@@ -43,8 +45,18 @@ const RecipeForm = () => {
         headers: { 'Content-Type': 'multipart/form-data'}
       });
       console.log('New Recipe added:', response.data);
+      // Show a success toast
+      toast.success('Recipe added successfully', {
+        position: 'bottom-right',
+        autoClose: 3000, // Close the toast after 3 seconds
+      });
     } catch (error) {
       console.error('An error occurred:', error);
+      //error toast
+      toast.error('An error occured while adding the recipe',{
+        position: 'bottom-right',
+        autoClose: 3000, // Close the toast after
+      })
     }
   };
 
@@ -76,6 +88,7 @@ const RecipeForm = () => {
           </form>
         </div>
       </div>
+      <ToastContainer/> {/*This is where the toast is located */}
     </section>
   );
 };

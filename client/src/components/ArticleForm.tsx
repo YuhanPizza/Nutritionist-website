@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "../styles/Main.css";
+import { ToastContainer, toast } from 'react-toastify';
 
 interface FormData {
   name: string;
@@ -44,8 +45,18 @@ const ArticleForm = () => {
         headers: { 'Content-Type': 'multipart/form-data'}
       });
       console.log('New Article added:', response.data);
+      //success toast
+      toast.success('Article added successfully',{
+        position: 'bottom-right',
+        autoClose: 3000,
+      })
     } catch (error) {
       console.error('An error occurred:', error);
+      //error toast
+      toast.error('An error occurred while adding the Article',{
+        position: 'bottom-right',
+        autoClose: 3000, // Close the toast after
+      })
     }
   };
 
@@ -77,6 +88,7 @@ const ArticleForm = () => {
           </form>
         </div>
       </div>
+      <ToastContainer/> {/*Toast Container */}
     </section>
   );
 };

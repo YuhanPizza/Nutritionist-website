@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import 'react-toastify/dist/ReactToastify.css';
 import { Route, Routes, HashRouter } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
