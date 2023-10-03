@@ -36,7 +36,7 @@ function Navigation() {
   return (
     <div className="header-container">
       <header>
-        <nav className="navbar navbar-expand-lg  ps-5">
+        <nav className="navbar navbar-expand-lg ps-5 fixed-top bg-white">
           <Link className="navbar-brand text-warning" to="/">
             <i className="fa fa-cutlery"></i> FlavourOfHealth
           </Link>
