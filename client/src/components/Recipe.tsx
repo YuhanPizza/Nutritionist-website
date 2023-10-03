@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Card, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "../styles/Recipe.css";
 
 interface RecipeType {
@@ -46,7 +46,7 @@ function Recipe() {
   }, [id]);
 
   return (
-    <Container className="recipe-container" style={{ marginTop: "20px" }}>
+    <Container className="recipe-container">
       <h2>{mockResponse.title}</h2>
       {mockResponse.images.map((img, index) =>
         (index + 1) % 2 == 0 ? (
