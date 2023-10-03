@@ -46,22 +46,24 @@ function Recipe() {
   }, [id]);
 
   return (
-    <Container className="recipe-container">
+    <div className="recipe-container">
       <h2>{mockResponse.title}</h2>
-      {mockResponse.images.map((img, index) =>
-        (index + 1) % 2 == 0 ? (
-          <div className="pair" key={index}>
-            <img src={img} alt={`Image ${index + 1}`} />
-            <p>{mockResponse.paragraphs[index]}</p>
-          </div>
-        ) : (
-          <div className="pair" key={index}>
-            <p>{mockResponse.paragraphs[index]}</p>
-            <img src={img} alt={`Image ${index + 1}`} />
-          </div>
-        )
-      )}
-    </Container>
+      <Container className="recipe-content">
+        {mockResponse.images.map((img, index) =>
+          (index + 1) % 2 == 0 ? (
+            <div className="pair" key={index}>
+              <img src={img} alt={`Image ${index + 1}`} />
+              <p>{mockResponse.paragraphs[index]}</p>
+            </div>
+          ) : (
+            <div className="odd-pair" key={index}>
+              <p>{mockResponse.paragraphs[index]}</p>
+              <img src={img} alt={`Image ${index + 1}`} />
+            </div>
+          )
+        )}
+      </Container>
+    </div>
   );
 }
 
