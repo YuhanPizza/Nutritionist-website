@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import "../styles/Main.css";
-import { Toast } from 'react-bootstrap';
 
 interface FormData {
   name: string;
-  image: File | null;
+  images: File[];
   description: string;
   tag: string[];
 }
@@ -14,7 +13,7 @@ interface FormData {
 const RecipeForm = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
-    image: null,
+    images: [], // Change to an array
     description: '',
     tag: [],
   });
@@ -25,8 +24,11 @@ const RecipeForm = () => {
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files ? e.target.files[0] : null;
-    setFormData({ ...formData, image: file });
+    const files = e.target.files;
+    if (files) {
+      const fileArray = Array.from(files); // Convert to array
+      setFormData({ ...formData, images: [...formData.images, ...fileArray] }); // Append to images array
+    }
   };
 
   const handleTagChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,11 +40,17 @@ const RecipeForm = () => {
     e.preventDefault();
     const data = new FormData();
     for (const [key, value] of Object.entries(formData)) {
-      data.append(key, value);
+      if (key === 'images') {
+        for (const image of value as File[]) {
+          data.append(key, image);
+        }
+      } else {
+        data.append(key, value);
+      }
     }
     try {
-      const response = await axios.post('https://FlavourOfHealth-api.onrender.com/addRecipe', data,{
-        headers: { 'Content-Type': 'multipart/form-data'}
+      const response = await axios.post('https://FlavourOfHealth-api.onrender.com/addRecipe', data, {
+        headers: { 'Content-Type': 'multipart/form-data' }
       });
       console.log('New Recipe added:', response.data);
       // Show a success toast
@@ -52,8 +60,8 @@ const RecipeForm = () => {
       });
     } catch (error) {
       console.error('An error occurred:', error);
-      //error toast
-      toast.error('An error occured while adding the recipe',{
+      // Error toast
+      toast.error('An error occurred while adding the recipe', {
         position: 'bottom-right',
         autoClose: 3000, // Close the toast after
       })
@@ -71,8 +79,8 @@ const RecipeForm = () => {
               <input type="text" className="form-control" id="name" name="name" placeholder="Enter Recipe Name" onChange={handleChange} />
             </div>
             <div className="mb-3">
-              <label htmlFor="image" className="form-label">Image URL</label>
-              <input type="file" className="form-control" id="image" name="image" placeholder="Upload image" onChange={handleImageChange} />
+              <label htmlFor="image" className="form-label">Images</label>
+              <input type="file" className="form-control" id="image" name="image" multiple onChange={handleImageChange} /> {/* Add 'multiple' attribute */}
             </div>
             <div className="mb-3 preserve-whitespace">
               <label htmlFor="description" className="form-label">Description</label>
@@ -88,7 +96,7 @@ const RecipeForm = () => {
           </form>
         </div>
       </div>
-      <ToastContainer/> {/*This is where the toast is located */}
+      <ToastContainer /> {/* This is where the toast is located */}
     </section>
   );
 };
