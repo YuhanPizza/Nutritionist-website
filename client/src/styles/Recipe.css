@@ -1,0 +1,43 @@
+.recipe-art{
+    width: 80%;
+    margin: 0 auto;
+}
+.recipe-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.recipe-container{
+    padding: 10px;
+    text-align: center;
+}
+.pair, .odd-pair{
+    
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+/* // TODO: media query for mobile devices */
+.pair p{
+    padding: 5px 15px;
+    font-size: 18px;
+}
+@media(max-width: 1080px){
+.pair{
+    flex-direction: column-reverse;
+}
+.odd-pair{
+    flex-direction: column;
+}
+
+}
+img {
+    width: 548px;
+    height: 366px;
+    display: block;
+    margin: 0 auto;
+}

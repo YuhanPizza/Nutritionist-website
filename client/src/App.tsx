@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { Route, Routes, HashRouter } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -17,19 +17,21 @@ function App() {
   return (
     <HashRouter>
       <Navigation />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/recipes" element={<RecipeList />} />
-        <Route path="/recipe/:id" element={<Recipe />} />
-        <Route path="/nutrition" element={<Nutrition />} />
-        <Route path="/article/:id" element={<Article />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/add-recipe" element={<AddRecipe />} />
-        <Route path="/add-article" element={<AddArticle />} />
-        <Route path="/admin-login" element={<LoginPage />} />
-        {/* Add more routes as needed */}
-      </Routes>
+      <div style={{ marginTop: "60px" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/recipes" element={<RecipeList />} />
+          <Route path="/recipe/:id" element={<Recipe />} />
+          <Route path="/nutrition" element={<Nutrition />} />
+          <Route path="/article/:id" element={<Article />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/add-recipe" element={<AddRecipe />} />
+          <Route path="/add-article" element={<AddArticle />} />
+          <Route path="/admin-login" element={<LoginPage />} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </div>
     </HashRouter>
   );
 }

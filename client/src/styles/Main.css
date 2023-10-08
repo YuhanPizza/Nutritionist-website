@@ -30,6 +30,16 @@ ul.topBottomBordersOut li:hover:before, ul.topBottomBordersOut li:hover:after
     opacity: 1;
     transform: translateY(0px);
 }
+@media (max-width: 768px){
+     ul.topBottomBordersOut li:before{
+        display: none;
+    }
+    ul.topBottomBordersOut li:after{
+        width: 90%;
+        margin: 0 auto;
+        
+    }
+}
 
 .header-container{
     background-color: #ffffff;
@@ -63,4 +73,3 @@ ul.topBottomBordersOut li:hover:before, ul.topBottomBordersOut li:hover:after
 .card-body {
     padding: 1.5rem;
 }
- 
